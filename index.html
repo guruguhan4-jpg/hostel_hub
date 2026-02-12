@@ -3,469 +3,709 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hostel Hub - Student Dashboard</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background-color: #f5f5f5;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 400px;
-            margin: 0 auto;
-            background: white;
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        /* Landing Page */
-        .landing-page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
-        }
-
-        .logo-box {
-            width: 100%;
-            max-width: 320px;
-            height: 250px;
-            background-color: #d3d3d3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: 500;
-            margin-bottom: 60px;
-        }
-
-        .btn {
-            width: 100%;
-            max-width: 320px;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-
-        .btn:hover {
-            opacity: 0.9;
-        }
-
-        .btn-primary {
-            background-color: #2d2d2d;
-            color: white;
-        }
-
-        .btn-secondary {
-            background-color: #d3d3d3;
-            color: #000;
-        }
-
-        /* Login Page */
-        .login-page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding-top: 40px;
-        }
-
-        .login-page h1 {
-            font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 60px;
-        }
-
-        .input-field {
-            width: 100%;
-            max-width: 320px;
-            padding: 20px;
-            font-size: 16px;
-            border: none;
-            background-color: #d3d3d3;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .input-field::placeholder {
-            color: #000;
-        }
-
-        .forgot-link {
-            margin-top: 40px;
-            font-size: 14px;
-            text-decoration: none;
-            color: #000;
-        }
-
-        /* Dashboard */
-        .dashboard {
-            padding-top: 20px;
-        }
-
-        .dashboard-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 40px;
-        }
-
-        .welcome-text {
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .bell-icon {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-        }
-
-        .user-info {
-            margin-bottom: 40px;
-        }
-
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
-
-        .info-label {
-            font-size: 16px;
-        }
-
-        .info-value {
-            width: 170px;
-            height: 24px;
-            background-color: #d3d3d3;
-        }
-
-        .large-box {
-            width: 100%;
-            height: 280px;
-            background-color: #d3d3d3;
-            margin-bottom: 40px;
-        }
-
-        .action-buttons {
-            display: flex;
-            gap: 16px;
-        }
-
-        .action-buttons .btn {
-            flex: 1;
-        }
-
-        /* Forms */
-        .form-page {
-            padding-top: 20px;
-        }
-
-        .form-page h1 {
-            font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-
-        .form-container {
-            max-width: 320px;
-            margin: 0 auto;
-            padding: 30px;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-label {
-            display: block;
-            font-size: 14px;
-            margin-bottom: 8px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 12px;
-            font-size: 14px;
-            border: 1px solid #e0e0e0;
-            border-radius: 4px;
-        }
-
-        .form-input::placeholder {
-            color: #999;
-        }
-
-        textarea.form-input {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .form-container .btn {
-            margin-top: 10px;
-        }
-
-        /* Success/Info Pages */
-        .message-page {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 80vh;
-            text-align: center;
-            padding: 40px;
-        }
-
-        .message-text {
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 60px;
-            max-width: 280px;
-        }
-
-        /* Status Badges */
-        .status-page {
-            padding-top: 40px;
-        }
-
-        .status-badge {
-            width: 100%;
-            max-width: 360px;
-            padding: 40px;
-            margin: 0 auto 20px;
-            text-align: center;
-            font-size: 18px;
-            border-radius: 4px;
-        }
-
-        .status-approved {
-            background-color: #7bed9f;
-        }
-
-        .status-rejected {
-            background-color: #ff7675;
-        }
-
-        .status-pending {
-            background-color: #fdcb6e;
-        }
-
-        /* Password Reset */
-        .reset-form {
-            padding-top: 40px;
-        }
-
-        .reset-form .form-group {
-            margin-bottom: 24px;
-        }
-
-        .reset-form .form-label {
-            font-size: 14px;
-            margin-bottom: 12px;
-        }
-
-        .reset-form .form-input {
-            background-color: #d3d3d3;
-            border: none;
-            padding: 14px;
-        }
-
-        .reset-form .btn {
-            margin-top: 20px;
-            max-width: none;
-        }
-
-        .hidden {
-            display: none;
-        }
-    </style>
+    <title>Hostel Hub - Modern Hostel Management</title>
+   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Landing Page -->
-        <div id="landing" class="landing-page">
-            <div class="logo-box">Hostel Hub</div>
-            <button class="btn btn-secondary" onclick="showPage('login')">LOGIN</button>
-        </div>
-
-        <!-- Login Page -->
-        <div id="login" class="login-page hidden">
-            <h1>LOGIN</h1>
-            <form onsubmit="handleLogin(event)">
-                <input type="text" class="input-field" placeholder="USERNAME" required>
-                <input type="password" class="input-field" placeholder="PASSWORD" required>
-                <button type="submit" class="btn btn-secondary">SUBMIT</button>
-            </form>
-            <a href="#" class="forgot-link" onclick="showPage('forgot'); return false;">FORGOT PASSWORD</a>
-        </div>
-
-        <!-- Dashboard -->
-        <div id="dashboard" class="dashboard hidden">
-            <div class="dashboard-header">
-                <div class="welcome-text">
-                    welcome, username 
-                    <svg class="bell-icon" viewBox="0 0 24 24" fill="none" stroke="purple" stroke-width="2">
-                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                    </svg>
+    <!-- STUDENT LOGIN PAGE -->
+    <div id="studentLoginPage" class="page">
+        <div class="login-container">
+            <div class="login-left">
+                <div class="login-branding">
+                    <h1>Hostel Hub</h1>
+                    <p>Modern hostel management system for students and administrators. Streamline your hostel operations with ease.</p>
                 </div>
             </div>
-
-            <div class="user-info">
-                <div class="info-row">
-                    <span class="info-label">name</span>
-                    <div class="info-value"></div>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">dob</span>
-                    <div class="info-value"></div>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">class</span>
-                    <div class="info-value"></div>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">room no</span>
-                    <div class="info-value"></div>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">roommates</span>
-                    <div class="info-value"></div>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">from</span>
-                    <div class="info-value"></div>
-                </div>
-                <div class="info-row">
-                    <span class="info-label">to</span>
-                    <div class="info-value"></div>
+            <div class="login-right">
+                <div class="login-form-container">
+                    <h2>Student Login</h2>
+                    <p class="subtitle">Welcome back! Please login to your account.</p>
+                    <form onsubmit="return studentLogin(event)">
+                        <div class="form-group">
+                            <label for="studentUsername">Username</label>
+                            <input type="text" id="studentUsername" class="form-input" placeholder="Enter your username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="studentPassword">Password</label>
+                            <input type="password" id="studentPassword" class="form-input" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Login</button>
+                    </form>
+                    <div class="login-switch">
+                        Are you an administrator? <a href="#" onclick="showPage('adminLoginPage')">Login here</a>
+                    </div>
                 </div>
             </div>
-
-            <div class="large-box"></div>
-
-            <div class="action-buttons">
-                <button class="btn btn-primary" onclick="showPage('complaint')">raise complaint</button>
-                <button class="btn btn-primary" onclick="showPage('leave')">apply for leave</button>
-            </div>
-        </div>
-
-        <!-- Raise Complaint Form -->
-        <div id="complaint" class="form-page hidden">
-            <div class="form-container">
-                <div class="form-group">
-                    <label class="form-label">Name</label>
-                    <input type="text" class="form-input" placeholder="Value">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">class</label>
-                    <input type="text" class="form-input" placeholder="Value">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">problem</label>
-                    <input type="text" class="form-input" placeholder="Value">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">make a complaint</label>
-                    <textarea class="form-input" placeholder="Value"></textarea>
-                </div>
-                <button class="btn btn-primary" onclick="showPage('complaint-success')">Submit</button>
-            </div>
-        </div>
-
-        <!-- Apply for Leave Form -->
-        <div id="leave" class="form-page hidden">
-            <h1>applying for leave</h1>
-            <div class="form-container">
-                <div class="form-group">
-                    <label class="form-label">Name</label>
-                    <input type="text" class="form-input" placeholder="Value">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">class</label>
-                    <input type="text" class="form-input" placeholder="Value">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">date</label>
-                    <input type="date" class="form-input" placeholder="Value">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">reason for taking leave</label>
-                    <textarea class="form-input" placeholder="Value"></textarea>
-                </div>
-                <button class="btn btn-primary" onclick="showPage('leave-success')">Submit</button>
-            </div>
-        </div>
-
-        <!-- Complaint Success -->
-        <div id="complaint-success" class="message-page hidden">
-            <p class="message-text">complaint has been raised successfully<br>actions will be taken</p>
-            <button class="btn btn-primary" onclick="showPage('dashboard')">go back to dashboardd</button>
-        </div>
-
-        <!-- Leave Success -->
-        <div id="leave-success" class="message-page hidden">
-            <p class="message-text">your leave request has been received by the management<br><br>see notification bar for the confirmation</p>
-            <button class="btn btn-primary" onclick="showPage('dashboard')">go back to dashboard</button>
-        </div>
-
-        <!-- Status Page -->
-        <div id="status" class="status-page hidden">
-            <div class="status-badge status-approved">approved</div>
-            <div class="status-badge status-rejected">rejected</div>
-            <div class="status-badge status-pending">pending</div>
-        </div>
-
-        <!-- Forgot Password -->
-        <div id="forgot" class="reset-form hidden">
-            <div class="form-group">
-                <label class="form-label">enter your email id</label>
-                <input type="email" class="form-input">
-            </div>
-            <div class="form-group">
-                <label class="form-label">enter otp</label>
-                <input type="text" class="form-input">
-            </div>
-            <div class="form-group">
-                <label class="form-label">set new password</label>
-                <input type="password" class="form-input">
-            </div>
-            <div class="form-group">
-                <label class="form-label">confirm new password</label>
-                <input type="password" class="form-input">
-            </div>
-            <button class="btn btn-primary" onclick="showPage('login')">submit</button>
         </div>
     </div>
 
-    <script>
-        function showPage(pageId) {
-            const pages = ['landing', 'login', 'dashboard', 'complaint', 'leave', 'complaint-success', 'leave-success', 'status', 'forgot'];
-            pages.forEach(page => {
-                document.getElementById(page).classList.add('hidden');
-            });
-            document.getElementById(pageId).classList.remove('hidden');
-        }
+    <!-- ADMIN LOGIN PAGE -->
+    <div id="adminLoginPage" class="page hidden">
+        <div class="login-container">
+            <div class="login-left">
+                <div class="login-branding">
+                    <h1>Hostel Hub</h1>
+                    <p>Administrative portal for managing hostel operations, student requests, and facilities.</p>
+                </div>
+            </div>
+            <div class="login-right">
+                <div class="login-form-container">
+                    <h2>Admin Login</h2>
+                    <p class="subtitle">Access the administrative dashboard.</p>
+                    <form onsubmit="return adminLogin(event)">
+                        <div class="form-group">
+                            <label for="adminUsername">Username</label>
+                            <input type="text" id="adminUsername" class="form-input" placeholder="Enter admin username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminPassword">Password</label>
+                            <input type="password" id="adminPassword" class="form-input" placeholder="Enter admin password" required>
+                        </div>
+                        <button type="submit" class="btn-primary">Login</button>
+                    </form>
+                    <div class="login-switch">
+                        Are you a student? <a href="#" onclick="showPage('studentLoginPage')">Login here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        function handleLogin(event) {
-            event.preventDefault();
-            showPage('dashboard');
-        }
-    </script>
+    <!-- STUDENT DASHBOARD -->
+    <div id="studentDashboard" class="page hidden">
+        <div class="dashboard-layout">
+            <aside class="sidebar" id="studentSidebar">
+                <div class="sidebar-header">
+                    <h2>Hostel Hub</h2>
+                </div>
+                <nav class="sidebar-nav">
+                    <a class="nav-item active" onclick="showStudentSection('dashboard')">
+                        <span class="nav-item-icon">📊</span>
+                        <span>Dashboard</span>
+                    </a>
+                    <a class="nav-item" onclick="showStudentSection('raiseComplaint')">
+                        <span class="nav-item-icon">📝</span>
+                        <span>Raise Complaint</span>
+                    </a>
+                    <a class="nav-item" onclick="showStudentSection('leaveRequest')">
+                        <span class="nav-item-icon">🗓️</span>
+                        <span>Request Leave</span>
+                    </a>
+                    <a class="nav-item" onclick="showStudentSection('roomDetails')">
+                        <span class="nav-item-icon">🏠</span>
+                        <span>Room Details</span>
+                    </a>
+                    <a class="nav-item" onclick="logout()">
+                        <span class="nav-item-icon">🚪</span>
+                        <span>Logout</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <main class="main-content">
+                <div class="top-bar">
+                    <button class="mobile-menu-btn" onclick="toggleSidebar('studentSidebar')">☰</button>
+                    <h1 class="page-title" id="studentPageTitle">Dashboard</h1>
+                    <div class="user-profile">
+                        <div class="user-avatar" id="studentAvatar">JD</div>
+                        <span id="studentName">John Doe</span>
+                    </div>
+                </div>
+
+                <div class="content-area">
+                    <!-- Dashboard Section -->
+                    <div id="studentDashboardSection">
+                        <div class="welcome-section">
+                            <h2>Welcome back, <span id="welcomeStudentName">John</span>! 👋</h2>
+                            <p>Here's what's happening with your hostel account today.</p>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-card-header">
+                                    <span class="stat-card-title">Room Number</span>
+                                    <div class="stat-card-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--info);">🏠</div>
+                                </div>
+                                <div class="stat-card-value">A-201</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-header">
+                                    <span class="stat-card-title">Complaints Raised</span>
+                                    <div class="stat-card-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);">📝</div>
+                                </div>
+                                <div class="stat-card-value">3</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-header">
+                                    <span class="stat-card-title">Leave Requests</span>
+                                    <div class="stat-card-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);">🗓️</div>
+                                </div>
+                                <div class="stat-card-value">2</div>
+                            </div>
+                        </div>
+
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3 class="section-title">Recent Activity</h3>
+                            </div>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Description</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Complaint</td>
+                                            <td>Wifi not working in room</td>
+                                            <td>Feb 10, 2026</td>
+                                            <td><span class="badge badge-warning">Ongoing</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Leave Request</td>
+                                            <td>Home visit for 3 days</td>
+                                            <td>Feb 8, 2026</td>
+                                            <td><span class="badge badge-success">Approved</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Complaint</td>
+                                            <td>AC maintenance required</td>
+                                            <td>Feb 5, 2026</td>
+                                            <td><span class="badge badge-success">Solved</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Raise Complaint Section -->
+                    <div id="raiseComplaintSection" class="hidden">
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3 class="section-title">Raise a New Complaint</h3>
+                            </div>
+                            <div id="complaintSuccess" class="alert alert-success">
+                                ✓ Your complaint has been submitted successfully!
+                            </div>
+                            <form onsubmit="return submitComplaint(event)">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="complaintType">Complaint Type</label>
+                                        <select id="complaintType" class="form-input" required>
+                                            <option value="">Select complaint type</option>
+                                            <option value="Maintenance">Maintenance</option>
+                                            <option value="Cleanliness">Cleanliness</option>
+                                            <option value="Food">Food Quality</option>
+                                            <option value="Wifi">Wifi/Internet</option>
+                                            <option value="Electricity">Electricity</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="complaintDescription">Description</label>
+                                    <textarea id="complaintDescription" class="form-input" placeholder="Please describe your complaint in detail..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn-submit">Submit Complaint</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Leave Request Section -->
+                    <div id="leaveRequestSection" class="hidden">
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3 class="section-title">Request Leave</h3>
+                            </div>
+                            <div id="leaveSuccess" class="alert alert-success">
+                                ✓ Your leave request has been submitted successfully!
+                            </div>
+                            <form onsubmit="return submitLeaveRequest(event)">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="leaveFromDate">From Date</label>
+                                        <input type="date" id="leaveFromDate" class="form-input" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="leaveToDate">To Date</label>
+                                        <input type="date" id="leaveToDate" class="form-input" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="leaveReason">Reason</label>
+                                    <textarea id="leaveReason" class="form-input" placeholder="Please provide the reason for leave..." required></textarea>
+                                </div>
+                                <button type="submit" class="btn-submit">Submit Request</button>
+                            </form>
+                        </div>
+
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3 class="section-title">My Leave Requests</h3>
+                            </div>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>From Date</th>
+                                            <th>To Date</th>
+                                            <th>Reason</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Feb 15, 2026</td>
+                                            <td>Feb 17, 2026</td>
+                                            <td>Home visit for family function</td>
+                                            <td><span class="badge badge-warning">Pending</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Feb 1, 2026</td>
+                                            <td>Feb 3, 2026</td>
+                                            <td>Medical checkup</td>
+                                            <td><span class="badge badge-success">Approved</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Room Details Section -->
+                    <div id="roomDetailsSection" class="hidden">
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3 class="section-title">Available Rooms</h3>
+                            </div>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Room No</th>
+                                            <th>Block</th>
+                                            <th>Capacity</th>
+                                            <th>Students Staying</th>
+                                            <th>Availability</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A-201</td>
+                                            <td>Block A</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>0</td>
+                                            <td><span class="badge badge-danger">Full</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>A-202</td>
+                                            <td>Block A</td>
+                                            <td>3</td>
+                                            <td>2</td>
+                                            <td>1</td>
+                                            <td><span class="badge badge-success">Available</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B-101</td>
+                                            <td>Block B</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>0</td>
+                                            <td><span class="badge badge-danger">Full</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B-102</td>
+                                            <td>Block B</td>
+                                            <td>2</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td><span class="badge badge-success">Available</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>C-301</td>
+                                            <td>Block C</td>
+                                            <td>4</td>
+                                            <td>3</td>
+                                            <td>1</td>
+                                            <td><span class="badge badge-success">Available</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>C-302</td>
+                                            <td>Block C</td>
+                                            <td>4</td>
+                                            <td>4</td>
+                                            <td>0</td>
+                                            <td><span class="badge badge-danger">Full</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- ADMIN DASHBOARD -->
+    <div id="adminDashboard" class="page hidden">
+        <div class="dashboard-layout">
+            <aside class="sidebar" id="adminSidebar">
+                <div class="sidebar-header">
+                    <h2>Hostel Hub</h2>
+                </div>
+                <nav class="sidebar-nav">
+                    <a class="nav-item active" onclick="showAdminSection('dashboard')">
+                        <span class="nav-item-icon">📊</span>
+                        <span>Dashboard</span>
+                    </a>
+                    <a class="nav-item" onclick="showAdminSection('viewComplaints')">
+                        <span class="nav-item-icon">📝</span>
+                        <span>View Complaints</span>
+                    </a>
+                    <a class="nav-item" onclick="showAdminSection('viewLeaveRequests')">
+                        <span class="nav-item-icon">🗓️</span>
+                        <span>Leave Requests</span>
+                    </a>
+                    <a class="nav-item" onclick="showAdminSection('roomManagement')">
+                        <span class="nav-item-icon">🏠</span>
+                        <span>Room Management</span>
+                    </a>
+                    <a class="nav-item" onclick="logout()">
+                        <span class="nav-item-icon">🚪</span>
+                        <span>Logout</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <main class="main-content">
+                <div class="top-bar">
+                    <button class="mobile-menu-btn" onclick="toggleSidebar('adminSidebar')">☰</button>
+                    <h1 class="page-title" id="adminPageTitle">Dashboard</h1>
+                    <div class="user-profile">
+                        <div class="user-avatar">AD</div>
+                        <span>Admin</span>
+                    </div>
+                </div>
+
+                <div class="content-area">
+                    <!-- Admin Dashboard Section -->
+                    <div id="adminDashboardSection">
+                        <div class="welcome-section">
+                            <h2>Admin Dashboard </h2>
+                            <p>Manage hostel operations and student requests efficiently.</p>
+                        </div>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-card-header">
+                                    <span class="stat-card-title">Total Students</span>
+                                    <div class="stat-card-icon" style="background: rgba(59, 130, 246, 0.1); color: var(--info);">👥</div>
+                                </div>
+                                <div class="stat-card-value">156</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-header">
+                                    <span class="stat-card-title">Total Rooms</span>
+                                    <div class="stat-card-icon" style="background: rgba(16, 185, 129, 0.1); color: var(--success);">🏠</div>
+                                </div>
+                                <div class="stat-card-value">48</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-header">
+                                    <span class="stat-card-title">Active Complaints</span>
+                                    <div class="stat-card-icon" style="background: rgba(245, 158, 11, 0.1); color: var(--warning);">📝</div>
+                                </div>
+                                <div class="stat-card-value">12</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-header">
+                                    <span class="stat-card-title">Pending Requests</span>
+                                    <div class="stat-card-icon" style="background: rgba(239, 68, 68, 0.1); color: var(--danger);">⏳</div>
+                                </div>
+                                <div class="stat-card-value">8</div>
+                            </div>
+                        </div>
+
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3 class="section-title">Recent Complaints</h3>
+                            </div>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Student</th>
+                                            <th>Type</th>
+                                            <th>Description</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>John Doe</td>
+                                            <td>Wifi</td>
+                                            <td>Internet not working</td>
+                                            <td>Feb 12, 2026</td>
+                                            <td><span class="badge badge-warning">Ongoing</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sarah Smith</td>
+                                            <td>Maintenance</td>
+                                            <td>Door lock broken</td>
+                                            <td>Feb 11, 2026</td>
+                                            <td><span class="badge badge-warning">Ongoing</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mike Johnson</td>
+                                            <td>Cleanliness</td>
+                                            <td>Washroom cleaning needed</td>
+                                            <td>Feb 10, 2026</td>
+                                            <td><span class="badge badge-success">Solved</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View Complaints Section -->
+                    <div id="viewComplaintsSection" class="hidden">
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3 class="section-title">All Complaints</h3>
+                            </div>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Student Name</th>
+                                            <th>Room</th>
+                                            <th>Complaint Type</th>
+                                            <th>Description</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="complaintsTableBody">
+                                        <tr>
+                                            <td>John Doe</td>
+                                            <td>A-201</td>
+                                            <td>Wifi</td>
+                                            <td>Wifi not working in room</td>
+                                            <td>Feb 12, 2026</td>
+                                            <td><span class="badge badge-warning">Ongoing</span></td>
+                                            <td>
+                                                <select class="form-input" style="width: auto; padding: 0.5rem;" onchange="updateComplaintStatus(this, 0)">
+                                                    <option value="Ongoing" selected>Ongoing</option>
+                                                    <option value="Solved">Solved</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sarah Smith</td>
+                                            <td>B-102</td>
+                                            <td>Maintenance</td>
+                                            <td>Door lock needs replacement</td>
+                                            <td>Feb 11, 2026</td>
+                                            <td><span class="badge badge-warning">Ongoing</span></td>
+                                            <td>
+                                                <select class="form-input" style="width: auto; padding: 0.5rem;" onchange="updateComplaintStatus(this, 1)">
+                                                    <option value="Ongoing" selected>Ongoing</option>
+                                                    <option value="Solved">Solved</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mike Johnson</td>
+                                            <td>C-301</td>
+                                            <td>Cleanliness</td>
+                                            <td>Washroom cleaning required</td>
+                                            <td>Feb 10, 2026</td>
+                                            <td><span class="badge badge-success">Solved</span></td>
+                                            <td>
+                                                <select class="form-input" style="width: auto; padding: 0.5rem;" onchange="updateComplaintStatus(this, 2)">
+                                                    <option value="Ongoing">Ongoing</option>
+                                                    <option value="Solved" selected>Solved</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Emma Wilson</td>
+                                            <td>A-202</td>
+                                            <td>Electricity</td>
+                                            <td>Power socket not working</td>
+                                            <td>Feb 9, 2026</td>
+                                            <td><span class="badge badge-warning">Ongoing</span></td>
+                                            <td>
+                                                <select class="form-input" style="width: auto; padding: 0.5rem;" onchange="updateComplaintStatus(this, 3)">
+                                                    <option value="Ongoing" selected>Ongoing</option>
+                                                    <option value="Solved">Solved</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- View Leave Requests Section -->
+                    <div id="viewLeaveRequestsSection" class="hidden">
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3 class="section-title">Leave Requests</h3>
+                            </div>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Student Name</th>
+                                            <th>Room</th>
+                                            <th>From Date</th>
+                                            <th>To Date</th>
+                                            <th>Reason</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="leaveRequestsTableBody">
+                                        <tr>
+                                            <td>John Doe</td>
+                                            <td>A-201</td>
+                                            <td>Feb 15, 2026</td>
+                                            <td>Feb 17, 2026</td>
+                                            <td>Family function</td>
+                                            <td><span class="badge badge-warning">Pending</span></td>
+                                            <td>
+                                                <button class="btn-action btn-approve" onclick="updateLeaveStatus(0, 'Approved')">Approve</button>
+                                                <button class="btn-action btn-reject" onclick="updateLeaveStatus(0, 'Rejected')">Reject</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sarah Smith</td>
+                                            <td>B-102</td>
+                                            <td>Feb 18, 2026</td>
+                                            <td>Feb 20, 2026</td>
+                                            <td>Medical checkup</td>
+                                            <td><span class="badge badge-warning">Pending</span></td>
+                                            <td>
+                                                <button class="btn-action btn-approve" onclick="updateLeaveStatus(1, 'Approved')">Approve</button>
+                                                <button class="btn-action btn-reject" onclick="updateLeaveStatus(1, 'Rejected')">Reject</button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mike Johnson</td>
+                                            <td>C-301</td>
+                                            <td>Feb 10, 2026</td>
+                                            <td>Feb 12, 2026</td>
+                                            <td>Home visit</td>
+                                            <td><span class="badge badge-success">Approved</span></td>
+                                            <td>-</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Emma Wilson</td>
+                                            <td>A-202</td>
+                                            <td>Feb 5, 2026</td>
+                                            <td>Feb 7, 2026</td>
+                                            <td>Personal work</td>
+                                            <td><span class="badge badge-danger">Rejected</span></td>
+                                            <td>-</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Room Management Section -->
+                    <div id="roomManagementSection" class="hidden">
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3 class="section-title">Room Management</h3>
+                            </div>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Room No</th>
+                                            <th>Block</th>
+                                            <th>Capacity</th>
+                                            <th>Students Staying</th>
+                                            <th>Availability</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>A-201</td>
+                                            <td>Block A</td>
+                                            <td>3</td>
+                                            <td>3</td>
+                                            <td>0</td>
+                                            <td><span class="badge badge-danger">Full</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>A-202</td>
+                                            <td>Block A</td>
+                                            <td>3</td>
+                                            <td>2</td>
+                                            <td>1</td>
+                                            <td><span class="badge badge-success">Available</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B-101</td>
+                                            <td>Block B</td>
+                                            <td>2</td>
+                                            <td>2</td>
+                                            <td>0</td>
+                                            <td><span class="badge badge-danger">Full</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>B-102</td>
+                                            <td>Block B</td>
+                                            <td>2</td>
+                                            <td>1</td>
+                                            <td>1</td>
+                                            <td><span class="badge badge-success">Available</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>C-301</td>
+                                            <td>Block C</td>
+                                            <td>4</td>
+                                            <td>3</td>
+                                            <td>1</td>
+                                            <td><span class="badge badge-success">Available</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>C-302</td>
+                                            <td>Block C</td>
+                                            <td>4</td>
+                                            <td>4</td>
+                                            <td>0</td>
+                                            <td><span class="badge badge-danger">Full</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+  <script src="./script.js"></script>
 </body>
+
+
 </html>
